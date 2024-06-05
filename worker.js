@@ -50,9 +50,9 @@ export default {
             console.error('Error during notification update:', error);
         }
 
-        // Return the current count as the response
-        return new Response(count.toString(), {
-            headers: { 'Content-Type': 'text/plain' },
+        // Return the current count as the response in JSON format
+        return new Response(JSON.stringify({ value: count }), {
+            headers: { 'Content-Type': 'application/json' },
         });
     }
 };
@@ -94,4 +94,4 @@ async function updateTelegramMessage(botToken, userId, messageId, message) {
     
     const data = await response.json();
     return data;
-        }
+}
